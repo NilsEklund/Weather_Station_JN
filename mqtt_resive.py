@@ -25,24 +25,30 @@ def mqtt_wind_data():
     client = mqtt.Client()
 
     client.connect('broker.hivemq.com', port=1883, keepalive=60)
-                   
-    while not terminate_program:
-        client.on_connect = on_connect_wind_data
-        client.on_message = on_message_wind_data
+    try:            
+        while not terminate_program:
+            client.on_connect = on_connect_wind_data
+            client.on_message = on_message_wind_data
 
-        client.loop()
+            client.loop()
+    
+    except:
+        print ('error reading wind data')
 
 def mqtt_temp_data():
     global terminate_program
     client = mqtt.Client()
 
     client.connect('broker.hivemq.com', port=1883, keepalive=60)
-                   
-    while not terminate_program:
-        client.on_connect = on_connect_temp_data
-        client.on_message = on_message_temp_data
+    try:               
+        while not terminate_program:
+            client.on_connect = on_connect_temp_data
+            client.on_message = on_message_temp_data
 
-        client.loop()
+            client.loop()
+    
+    except:
+        print ('error reading temperature data')
 
 wind_speed_text = 0
 temperature_text = 0
