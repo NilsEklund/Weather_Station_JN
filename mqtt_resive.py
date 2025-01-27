@@ -54,38 +54,31 @@ def mqtt_temp_data():
 
     print('Temperture Thread Closed')
 
-wind_speed_text = 0
-temperature_text = 0
-def gui_update():
+def app_update():
     global wind_speed_text
     global wind_data
     global temperature_text
     global temp_data
-    global terminate_program
+    global app
 
-    while not terminate_program:
-        try:
-            sleep(0.5)
-            wind_speed_text.value = f'Wind Speed: {wind_data} m/s'
-            temperature_text.value = f'Temperatur: {temp_data} °C'
-        except:
-            print ('')
-    print('gui closed')
-
+    wind_speed_text.value = f'Wind Speed: {wind_data} m/s'
+    temperature_text.value = f'Temperatur: {temp_data} °C'
+    app.after(time=100,function=app_update)
+    
+app = 0
 def main():
     global wind_data
     global temp_data
     global terminate_program
     global wind_speed_text
     global temperature_text
+    global app
 
     wind_data_thread = threading.Thread(target=mqtt_wind_data)
     temp_data_thread = threading.Thread(target=mqtt_temp_data)
-    gui_thread = threading.Thread(target=gui_update)
 
     wind_data_thread.start()
     temp_data_thread.start()
-    gui_thread.start()
 
     app = gz.App(title='Weather Station')
     header_text = gz.Text(app,text='Weather Station', size=30)
@@ -93,13 +86,14 @@ def main():
     wind_speed_text = gz.Text(app,text='Wind Speed: N/A m/s',size=20)
     temperature_text = gz.Text(app,text='Temperatur: N/A °C',size=20)
 
+    app_update()
+
     app.display()
 
     terminate_program = True
     print ('Closing Program')
     wind_data_thread.join()
     temp_data_thread.join()
-    gui_thread.join()
     print ('Program Closed')
 
 if __name__ == '__main__':
