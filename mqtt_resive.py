@@ -80,7 +80,7 @@ def main():
     wind_data_thread.start()
     temp_data_thread.start()
 
-    app = gz.App(title='Weather Station')
+    app = gz.App(title='Weather Station',bg=(0x7c,0xa9,0xd3))
     header_text = gz.Text(app,text='Weather Station', size=30)
     picture = gz.Picture(app, image='DJI_0056.JPG',width= 400,height= 300)
     wind_speed_text = gz.Text(app,text='Wind Speed: N/A m/s',size=20)
