@@ -35,6 +35,8 @@ def mqtt_wind_data():
     except:
         print ('error reading wind data')
 
+    print('Wind Data Thread Closed')
+
 def mqtt_temp_data():
     global terminate_program
     client = mqtt.Client()
@@ -49,6 +51,8 @@ def mqtt_temp_data():
     
     except:
         print ('error reading temperature data')
+
+    print('Temperture Thread Closed')
 
 wind_speed_text = 0
 temperature_text = 0
@@ -66,6 +70,7 @@ def gui_update():
             temperature_text.value = f'Temperatur: {temp_data} °C'
         except:
             print ('')
+    print('gui closed')
 
 def main():
     global wind_data
@@ -85,8 +90,9 @@ def main():
     
     app = gz.App(title='Weather Station')
     header_text = gz.Text(app,text='Weather Station', size=30)
-    wind_speed_text = gz.Text(app,text='Wind Speed: N/A m/s')
-    temperature_text = gz.Text(app,text='Temperatur: N/A °C')
+    picture = gz.Picture(app, image='DJI_0056.JPG',width= 400,height= 300)
+    wind_speed_text = gz.Text(app,text='Wind Speed: N/A m/s',size=20)
+    temperature_text = gz.Text(app,text='Temperatur: N/A °C',size=20)
 
     app.display()
 
