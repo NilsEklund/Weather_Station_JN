@@ -52,7 +52,7 @@ temperature_global = 0
 def read_temperature():
     global terminate_program
     global temperature_global
-    filepath = '/sys/bus/w1/devices/28-01204d302ce6/temperature'
+    filepath = '/sys/bus/w1/devices/28-012063b6f39f/temperature'
 
     try:
         with open(filepath,'r') as read_temperature:
