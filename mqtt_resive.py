@@ -87,7 +87,6 @@ def main():
     temp_data_thread.start()
     gui_thread.start()
 
-    
     app = gz.App(title='Weather Station')
     header_text = gz.Text(app,text='Weather Station', size=30)
     picture = gz.Picture(app, image='DJI_0056.JPG',width= 400,height= 300)
