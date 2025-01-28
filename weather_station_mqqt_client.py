@@ -16,11 +16,11 @@ def mqtt_client():
             wind_speed = data[0]
             temperature = data[1]
 
-            msg = client.publish("YRGO/ei23/wind_ms/grupp_jn", payload= wind_speed, qos=1)
+            msg = client.publish("YRGO/ei23/wind_ms/grupp4", payload= wind_speed, qos=1)
 
             msg.wait_for_publish()
 
-            msg = client.publish("YRGO/ei23/temp_degC/grupp_jn", payload= temperature, qos=1)
+            msg = client.publish("YRGO/ei23/temp_degC/grupp4", payload= temperature, qos=1)
 
             msg.wait_for_publish()
 
