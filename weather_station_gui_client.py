@@ -4,10 +4,10 @@ from time import sleep
 import guizero as gz
 
 def on_connect_wind_data(client, userdata, flags, rc):
-    client.subscribe('YRGO/ei23/wind_ms/grupp4',qos=1)
+    client.subscribe('yrgo_ei23/vind_ms/grupp4',qos=1)
 
 def on_connect_temp_data(client, userdata, flags, rc):
-    client.subscribe('YRGO/ei23/temp_degC/grupp4',qos=1)
+    client.subscribe('yrgo_ei23/temp_degC/grupp4',qos=1)
 
 wind_data = 0
 def on_message_wind_data (client, userdata, msg):
