@@ -31,7 +31,7 @@ def read_wind_data():
                     wind_data = ser.readline().decode('utf-8').strip()
                     wind_speed = rolling_filter(wind_data)
 
-                    wind_speed = int(wind_speed) - 202
+                    wind_speed = int(wind_speed) - 200
                     if wind_speed < 0:
                         wind_speed = 0
 
