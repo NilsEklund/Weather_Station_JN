@@ -1,3 +1,5 @@
+#Denna kod används inte!!! Ville bara testa och sätta upp en LAN server
+
 import socket
 import weather_station
 from time import sleep
